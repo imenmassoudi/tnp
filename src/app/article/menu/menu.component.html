@@ -1,0 +1,22 @@
+<mat-toolbar style="background-color: lightpink; height: 60px;">
+  <mat-toolbar-row>
+    <img style="height: 50px;width: 50px;" src="../../../assets/article/bebestore.png">
+    <span>Baby Store</span>
+    <div style="margin-left: 1000px">
+    <a  mat-button routerLinkActive='actif'  [routerLink]="['/accueil']">Accueil</a>
+<a mat-button routerLinkActive='actif' [routerLink]="['/fournisseur']">Commander Article</a>
+<a mat-button routerLinkActive='actif' [routerLink]="['/articles']">Article</a>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span mat-button [routerLink]="['/login']">
+             <mat-icon>account_circle</mat-icon>
+                     Deconnexion
+        </span>
+      </button>
+    </mat-menu>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

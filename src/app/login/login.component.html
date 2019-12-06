@@ -1,0 +1,33 @@
+<div class="login">
+
+  <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around;" >
+    <mat-card class="cardlogin" >
+      <mat-card-title >Login</mat-card-title>
+      <form [formGroup]="login">
+        <mat-card-content >
+          <mat-form-field appearance="legacy" >
+            <mat-label>Username</mat-label>
+            <input matInput pattern="[A-Za-z]*" formControlName="username" placeholder="Enter your username.." #un name="username" required>
+            <mat-icon matSuffix color="primary">account_circle</mat-icon>
+            <mat-error *ngIf="username.dirty && username.invalid && username.touched && username.errors?.pattern">
+              username must be string
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="legacy" >
+            <mat-label>Password</mat-label>
+            <input pattern="[0-9]*" formControlName="password" matInput type="password" placeholder="Enter your password"  #ps name="password" required>
+            <mat-error *ngIf="password.errors?.pattern && password.invalid && password.dirty && password.touched">
+              password must be a number and contains at least 4 characters
+            </mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions align="end" style="padding-right: 15px">
+          <button mat-flat-button color="primary" (click)="signin(un.value , ps.value)"> Sign in <mat-icon>keyboard_arrow_right</mat-icon></button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+
+</div>
+
+

@@ -1,0 +1,22 @@
+<app-menu></app-menu>
+<div *ngFor="let article of articles; let indice = index" style="background-image: url('~assets/article/mj1.png')">
+  <mat-card>
+    <mat-checkbox #i1 (change)="oncheck(indice,i1.checked)" >
+      <mat-card-header>
+        <mat-card-title style="text-align: center; width: 100%">{{article.libelle}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <img mat-card-image src="/assets/article/{{article.photo}}.jpg" /> Prix: {{article.prix}}Dt
+      </mat-card-content>
+    </mat-checkbox><br>
+<!--    <mat-form-field style="width: 100%" >-->
+<!--      <mat-label>-->
+<!--        Quantité-->
+<!--      </mat-label>-->
+<!--      <input matInput placeholder="qte" [(ngModel)]="article.qtes">-->
+<!--    </mat-form-field>-->
+    <mat-divider></mat-divider>
+  </mat-card>
+</div>
+<button mat-raised-button color="accent" (click)="onCommander()" [disabled]="somme == 0">Commander</button>
+somme {{somme}}

@@ -1,0 +1,55 @@
+<app-menu></app-menu><br><br>
+<h2 style="color: #A9A9A9	;text-align: center	" class="mat-display-3"><mat-icon> store_front </mat-icon> Baby Store <mat-icon> child_care </mat-icon></h2>
+<mat-card style="margin: 50px; height: 100%">
+  <mat-form-field style="margin-left: 900px">
+    <input matInput type="text" name="search" [(ngModel)]="searchText" placeholder="Chercher par libelle">
+  </mat-form-field>
+  <mat-icon>search</mat-icon>
+  <hr>
+  <mat-card-content  style="display: flex; flex-wrap: wrap">
+    <div class="col-4" style="padding: 10px" *ngFor="let article of articles | search : searchText">
+      <mat-card [ngClass]="article.qtes == 0 ? 'fstock':'ok'">
+        <mat-card-header style="width: 100%">
+          <mat-card-title style="text-align: center; width: 100%" >
+          <mat-icon *ngIf="article.qtes == 0">warning</mat-icon>
+            {{article.libelle}}<mat-icon *ngIf="article.test == true" style="color: yellow">star</mat-icon>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <img mat-card-image src="/assets/article/{{article.photo}}.jpg" />
+        </mat-card-content>
+        <mat-card-actions align="end" style="padding-right: 15px; display: flex; justify-content: space-between">
+          <button mat-flat-button color="primary" style="background-color: lightpink" (click)="openDialogDetaill(article.idArticle)" > View
+            <mat-icon style="background-color: lightpink">visibility</mat-icon>
+          </button>
+          <span>
+          <button mat-icon-button *ngIf="article.qtes>0">
+            <mat-icon color="accent" (click)="modify(article.idArticle)">edit</mat-icon>
+          </button>
+          <button mat-icon-button *ngIf="article.qtes>0">
+            <mat-icon color="accent" (click)="remove(article.idArticle)">delete</mat-icon>
+          </button>
+          <a mat-button color="accent" [routerLink]="['/fournisseur']" *ngIf="article.qtes==0">
+            <span>
+              Commander
+              <mat-icon>
+                add_shopping_cart
+              </mat-icon>
+            </span>
+          </a>
+          </span>
+
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div>
+      <div>
+          <button mat-fab color="accent" class="text-center" style="margin-top: 100px">
+            <mat-icon style="color: white; font-size: 24px;" (click)="openDialogAdd()" >add</mat-icon>
+          </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+

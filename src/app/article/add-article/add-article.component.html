@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Add Article</h1>
+<div mat-dialog-content>
+  <form [formGroup]="ajout" >
+    <mat-form-field style="width: 100%" >
+      <mat-label>Libelle</mat-label>
+      <input matInput placeholder="entrez un libelle" pattern="[A-Z]+[A-Za-z]*"  formControlName="libelle" required [(ngModel)]="article.libelle">
+      <mat-error *ngIf="libelle.invalid && libelle.touched && libelle.dirty ">
+        <span *ngIf="libelle.errors.required">
+        <mat-icon>error</mat-icon>  REQUIRED
+        </span>
+        <span *ngIf="libelle.errors?.pattern">
+         <mat-icon>error</mat-icon> Libelle must start with capital
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="width: 100%">
+      <mat-label>Prix</mat-label>
+      <input matInput placeholder="saisir le prix" pattern="[0-9]*" required formControlName="Prix" style="width: 100%" [(ngModel)]="article.prix" >
+      <mat-error  *ngIf="Prix.invalid && (Prix.touched || Prix.dirty)">
+        <span *ngIf="Prix.errors.required">
+        <mat-icon>error</mat-icon>  Prix invalid
+        </span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field style="width: 100%" >
+      <mat-label>Quantité en stock</mat-label>
+      <input matInput placeholder="quantité en stock"  formControlName="qtes"  [(ngModel)]="article.qtes">
+      <mat-error  *ngIf="qtes.invalid && (qtes.touched || qtes.dirty)">
+        <span *ngIf="qtes.errors.required">
+          <mat-icon>error</mat-icon> Qte invalid
+        </span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput  [matDatepicker]="picker3" placeholder="Date Fabrication" [value]="article.dateFabrication">
+      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+      <mat-datepicker #picker3></mat-datepicker>
+    </mat-form-field>
+    <input id="singleFile" type="file" #image  />
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()" >No Thanks</button>
+  <button mat-flat-button [disabled]="ajout.invalid" [mat-dialog-close]="article" (click)="add(image.value)">Ok</button>
+</div>

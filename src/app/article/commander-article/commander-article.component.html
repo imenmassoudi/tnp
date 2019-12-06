@@ -1,0 +1,45 @@
+<app-menu></app-menu>
+<div>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Fournisseur" disabled value="Moncef Jouets">
+  </mat-form-field>
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Nom</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" [optional]="required">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Adresse</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Valider</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="openDialog()">Commander</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+</div>
+<div style="margin-left: 500px;margin-top: -200px">
+  <img src="../../../assets/article/mj1.png">
+</div>
+
+

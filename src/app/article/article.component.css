@@ -1,0 +1,19 @@
+img{
+  width: 200px;
+  height: 200px;
+}
+mat-card{
+}
+.actif{
+  color:#A9A9A9;
+}
+.ok{
+}
+.fstock{
+  color: red;
+}
+
+
+@media (min-width: 700px) {
+}
+

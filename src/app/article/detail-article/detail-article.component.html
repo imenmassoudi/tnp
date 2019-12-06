@@ -1,0 +1,21 @@
+<div mat-dialog-content>
+  <mat-card>
+  <mat-card-header style="width: 100%">
+   <mat-card-title style="text-align: center; width: 100%;color: lightpink ">
+     Article {{article.idArticle}}<mat-icon> child_care </mat-icon>
+   </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <strong>{{article.libelle|uppercase}}</strong>
+  </mat-card-content>
+  <mat-card-content>
+    <span>Prix:</span> {{article.prix}}Dt
+  </mat-card-content>
+  <mat-card-content>
+  <span>Quantité en stock:</span> {{article.qtes}}
+  </mat-card-content>
+    <mat-card-content>
+      <span>Date fabrication: </span> {{article.dateFabrication|date: 'dd/MM/yyyy'}}
+    </mat-card-content>
+</mat-card>
+</div>
